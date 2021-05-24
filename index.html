@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>My 1st Website</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Reggae+One&display=swap" rel="stylesheet">
+  </head>
+  <body>
+    <body bgcolor="green">
+    <div class="hero-image">
+      <div class="hero-text">
+        <h1>Jose Soriano</h1>
+        <h5>This is my 1st website</h5>
+      </div>
+    </div>
+    <div id="navbar">
+      <a href="index.html">Home</a>
+      <a href="aboutme.html">About Me</a>
+      <a href="myportfolio.html">My Portfolio</a>
+      <a href="contact.html">Contact</a>
+    </div>
+    <br>
+    <p style="float:right;"><img src="Rappers.jpg" height="600px" width="600px" border="0px"></p>
+    <br>
+    <br>
+  <canvas id="sketch" width="120" height="720"></canvas>
+
+  <script>
+
+  document.addEventListener('DOMContentLoaded', main);
+
+  var sketch;
+  var context;
+  var circle = {'x':0, 'y':100, 'r':25};
+  var dx = 2;
+  var fps = 10;
+
+  function main() {
+    sketch = document.getElementById('sketch');
+    context = sketch.getContext("2d");
+    circle = {'x':25, 'y':sketch.offsetHeight/2, 'r':25};
+    setInterval(animate, fps);
+  }
+
+  function animate() {
+    context.clearRect(0, 0, sketch.offsetWidth, sketch.offsetHeight);
+    draw_circle(circle.x, circle.y, circle.r);
+    circle.x = circle.x + dx;
+    if (circle.x > sketch.offsetWidth - dx - circle.r){
+      dx = dx * -1
+    }
+    else if (circle.x < circle.r - dx){
+      dx = 2
+    }
+  }
+
+  function draw_circle(x, y, r) {
+    context.beginPath();
+    context.arc(x, y, r, 0, 2 * Math.PI, true);
+    context.closePath();
+    context.fill();
+  }
+  </script>
+  <div>
+    <p style="float:right;"><img src="BTNH.jpg" height="600px" width="600px" border="0px"></p>
+  </div>
+
+  <div>
+    <p style="float:right;"><img src="mexicoflag.jpg" height="300px" width="300px" border="1px"></p>
+  </div>
+  </body>
+</html>
